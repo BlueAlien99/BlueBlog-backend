@@ -23,4 +23,17 @@ function validateUserRegister(data){
   return extractError(validation);
 }
 
+function validateBlog(data){
+
+  const schema = Joi.object({
+    title: Joi.string().max(128).required(),
+    subtitle: Joi.string().max(512).required(),
+    content: Joi.string().max(4096).required()
+  });
+
+  const validation = schema.validate(data);
+  return extractError(validation);
+}
+
 module.exports.validateUserRegister = validateUserRegister;
+module.exports.validateBlog = validateBlog;
